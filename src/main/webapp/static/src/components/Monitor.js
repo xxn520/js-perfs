@@ -4,6 +4,7 @@
 import React, { PureComponent } from 'react'
 import { message, Table, Popconfirm, Modal, Button } from 'antd';
 import {LineChart, Line, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from 'recharts'
+import { TYPES_FILTER, MUTATIONS_FILTER } from '../helpers/consts'
 import { DateFormat } from '../helpers/DateUtils'
 import Rest from '../helpers/Rest'
 import Api from '../helpers/Api'
@@ -17,6 +18,7 @@ export default class Monitor extends PureComponent {
         },
         loading: false,
         visible: false,
+        chartData: [],
     }
     getColumns() {
         function cancel() {
@@ -26,10 +28,13 @@ export default class Monitor extends PureComponent {
             title: '类型',
             dataIndex: 'type',
             key: 'type',
+            filters: TYPES_FILTER,
         }, {
             title: '重绘比率',
             dataIndex: 'mutations',
             key: 'mutations',
+            filters: MUTATIONS_FILTER,
+            filterMultiple: false,
         }, {
             title: '开始时间',
             dataIndex: 'start_time',
@@ -64,14 +69,23 @@ export default class Monitor extends PureComponent {
             ),
         }]
     }
-    handleTableChange = (pagination) => {
+    handleTableChange = (pagination, filters) => {
         const pager = { ...this.state.pagination }
         pager.current = pagination.current
         this.setState({
             pagination: pager,
         })
+        if (filters.mutations && filters.mutations[0]) {
+            const mutations = filters.mutations[0].split('&')
+            mutations.forEach((m, i) => {
+                const p = m.split('=')
+                filters[p[0]] = p[1]
+            })
+            delete filters.mutations
+        }
         this.fetch({
-            page: pagination.current,
+            page: pagination.current - 1,
+            ...filters
         });
     }
     handleDelete = (id) => {
@@ -92,10 +106,18 @@ export default class Monitor extends PureComponent {
             visible: false,
         });
     }
+    convertData = (data) => {
+        const d = JSON.parse(data)
+        return d.map((v, i) => {
+            v.time = DateFormat(new Date(Math.floor((v.start + v.stop) / 2)), 'yyyy-MM-dd mm:ss')
+            return v
+        })
+    }
     openModal = (record) => {
         this.setState({
             visible: true,
             title: `${record.type} 帧率图表`,
+            chartData: this.convertData(record.json),
         })
     }
     fetch = (params = { }) => {
@@ -136,26 +158,16 @@ export default class Monitor extends PureComponent {
                     onCancel={this.handleCancel}
                     footer={<Button key="back" size="large" onClick={this.handleCancel}>关闭</Button>}
                 >
-                    <LineChart width={600} height={300} data={[
-                        {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-                        {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-                        {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-                        {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-                        {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-                        {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-                        {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-                    ]}
-                               margin={{top: 20, right: 50, left: 20, bottom: 5}}
+                    <LineChart
+                        width={600} height={300} data={this.state.chartData}
+                        margin={{top: 20, right: 50, left: 20, bottom: 5}}
                     >
-                        <XAxis dataKey="name"/>
+                        <XAxis dataKey="time"/>
                         <YAxis/>
                         <CartesianGrid strokeDasharray="3 3"/>
                         <Tooltip/>
                         <Legend />
-                        <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE"/>
-                        <ReferenceLine y={9800} label="Max" stroke="red"/>
-                        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="rate" stroke="#82ca9d" />
                     </LineChart>
                 </Modal>
             </div>

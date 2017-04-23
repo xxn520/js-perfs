@@ -13,7 +13,7 @@ public class MemoryRecord extends BaseModel{
 
     @FormParam("mutations")
     @Column(scale = 2)
-    private double mutations;
+    private Double mutations;
 
     @FormParam("type")
     private String type;

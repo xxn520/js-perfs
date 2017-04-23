@@ -1,5 +1,6 @@
 package com.m2mbob.jsperfs.service;
 
+import jersey.repackaged.com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.apache.commons.logging.Log;
@@ -94,6 +95,14 @@ public abstract class AbstractService {
                 if (path.getJavaType().getName().equals("java.lang.String")) {
                     if (StringUtils.contains(value, "*")) {
                         list.add(cb.like((Path<String>) path, StringUtils.replace(value, "*", "%")));
+                    } else if (StringUtils.contains(value, ",")) {
+                        List<Predicate> orPredicates = Lists.newArrayList();
+                        String[] strings = value.split(",");
+                        for (String s: strings) {
+                            Predicate p = cb.equal((Path<String>) path, s);
+                            orPredicates.add(cb.or(p));
+                        }
+                        list.add(cb.or(orPredicates.toArray(new Predicate[orPredicates.size()])));
                     } else {
                         list.add(cb.equal((Path<String>) path, value));
                     }

@@ -25,3 +25,15 @@ export const TYPES = [
     'react',
     'react-fiber',
 ]
+
+export const TYPES_FILTER = TYPES.map((type) => {
+    return { text: type, value: type }
+})
+
+export const MUTATIONS_FILTER = [
+    {text: '大于等于 0，小于 0.2', value: 'mutations-ge=0&mutations-lt=0.2'},
+    {text: '大于等于 0.2，小于 0.4', value: 'mutations-ge=0.2&mutations-lt=0.4'},
+    {text: '大于等于 0.4，小于 0.6', value: 'mutations-ge=0.4&mutations-lt=0.6'},
+    {text: '大于等于 0.6，小于 0.8', value: 'mutations-ge=0.6&mutations-lt=0.8'},
+    {text: '大于等于 0.8，小于等于 1', value: 'mutations-ge=0.8&mutations-le=1'},
+]
