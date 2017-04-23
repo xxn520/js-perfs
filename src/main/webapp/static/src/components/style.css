@@ -1,0 +1,2 @@
+.header { height: 60px; background: #fff; box-shadow: 0 1px 6px rgba(0, 0, 0, .2); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 0; }
+.header .logo { display: inline-block; height: 60px; width: 300px; background: url(/static/assets/images/logo.png) }

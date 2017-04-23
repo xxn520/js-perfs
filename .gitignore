@@ -1,0 +1,15 @@
+# OSX
+.DS_Store
+
+# Node
+**/node_modules/
+
+# build
+**/target/
+**/dist/
+
+# idea
+.idea/
+
+# other
+upload/

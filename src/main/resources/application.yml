@@ -1,0 +1,78 @@
+server.port: 8081
+spring:
+  profiles:
+    active: dev
+  jersey:
+    init:
+      jersey.config.server.mvc.templateBasePath.freemarker: /templates/
+      jersey.config.servlet.filter.staticContentRegex: .*/(static/dist/|static/assets/).*
+      jersey.config.server.mvc.caching.freemarker: true
+      jersey.config.server.mediaTypeMappings: "json: application/json, html: text/html"
+      jersey.config.disableMoxyJson: true
+      jersey.config.server.provider.packages: com.m2mbob.jsperfs
+    type: filter
+    filter:
+      order: 3
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://db/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+      hibernate.cache.use_query_cache: true
+      hibernate.cache.default_cache_concurrency_strategy: read-write
+      hibernate.cache.auto_evict_collection_cache: true
+      hibernate.cache.use_reference_entries: true
+      hibernate.search.default.directory_provider: filesystem
+      hibernate.search.default.indexBase: /mnt/java/jsperfs/lucene
+      javax.persistence.sharedCache.mode: ENABLE_SELECTIVE
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  dao:
+    exceptiontranslation:
+      enabled: true
+  aop:
+    auto: true
+    proxy-target-class: true
+---
+
+spring:
+  profiles: dev
+  jersey:
+    init:
+      jersey.config.server.mvc.caching.freemarker: false
+  datasource:
+    url: jdbc:mysql://localhost/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate.search.default.directory_provider: ram
+--- 
+
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:jsperfs
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database: HSQL
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate.search.default.directory_provider: ram
