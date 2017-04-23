@@ -26,6 +26,16 @@ export const TYPES = [
     'react-fiber',
 ]
 
+export const TYPES_COLORS = {
+    'innerHTML': '#f04134',
+    'angular': '#00a854',
+    'angular-trackby': '#108ee9',
+    'vue1': '#f5317f',
+    'vue2': '#f56a00',
+    'react': '#7265e6',
+    'react-fiber': '#ffbf00',
+}
+
 export const TYPES_FILTER = TYPES.map((type) => {
     return { text: type, value: type }
 })

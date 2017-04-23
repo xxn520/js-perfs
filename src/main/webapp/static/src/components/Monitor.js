@@ -60,8 +60,6 @@ export default class Monitor extends PureComponent {
                 <span>
                     <a href="javascript:void(0);" onClick={() => this.openModal(record)}>图表</a>
                     <span className="ant-divider" />
-                    <a href="javascript:void(0);" onClick={() => this.openModal(record)}>比较</a>
-                    <span className="ant-divider" />
                     <Popconfirm title="是否要删除？" onConfirm={() => this.handleDelete(record.id)} onCancel={cancel} okText="确定" cancelText="取消">
                         <a href="javascript:void(0);">删除</a>
                     </Popconfirm>
