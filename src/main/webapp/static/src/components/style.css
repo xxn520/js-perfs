@@ -1,2 +1,14 @@
 .header { height: 60px; background: #fff; box-shadow: 0 1px 6px rgba(0, 0, 0, .2); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 0; }
 .header .logo { display: inline-block; height: 60px; width: 300px; background: url(/static/assets/images/logo.png) }
+
+.vertical-center-modal { text-align: center; white-space: nowrap; }
+.vertical-center-modal:before { content: ''; display: inline-block; height: 100%; vertical-align: middle; width: 0; }
+.vertical-center-modal .ant-modal { display: inline-block; vertical-align: middle; top: 0; text-align: left; }
+
+.perfs-box .ant-row { margin-left: -8px; margin-right: -8px; }
+.perfs-box .ant-row > div { padding: 0 8px; }
+
+.custom-image { text-align: center; }
+.custom-image img { max-height: 200px; }
+.custom-card { padding: 10px 16px; }
+.custom-card p { color: #999; }

@@ -3,7 +3,7 @@
  */
 import React, { PureComponent } from 'react'
 import { message, Table, Popconfirm, Modal, Button, Tooltip as AntTooltip } from 'antd';
-import {LineChart, Line, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from 'recharts'
+import { LineChart, Line, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend, BarChart, Bar } from 'recharts'
 import findIndex from 'lodash/findIndex'
 import { TYPES_FILTER, MUTATIONS_FILTER, TYPES, TYPES_COLORS } from '../helpers/consts'
 import { DateFormat } from '../helpers/DateUtils'
@@ -24,6 +24,7 @@ export default class Memory extends PureComponent {
         analyseVisible: false,
         analyseChartData: [],
         analyseLoading: false,
+        compareData: [],
     }
     getColumns() {
         function cancel() {
@@ -155,18 +156,23 @@ export default class Memory extends PureComponent {
                     records.push(data[index])
                 }
             })
-            const result = []
+            const analyseChartData = []
+            const compareData = []
             records.forEach((r) => {
                 const { type, start_time } = r
                 const data = JSON.parse(r.json)
+                let sum = 0
                 data.forEach((d) => {
                     const time = (d.time - start_time)
-                    result.push({time, [type]: d.memory / (1024*1024)})
+                    const memory = d.memory / (1024*1024)
+                    sum += memory
+                    analyseChartData.push({time, [type]: memory})
                 })
+                compareData.push({name: type, memory: sum / data.length})
             })
-            console.log(result)
             this.setState({
-                analyseChartData: result,
+                compareData,
+                analyseChartData,
                 analyseVisible: true,
                 analyseLoading: false,
             })
@@ -238,16 +244,17 @@ export default class Memory extends PureComponent {
             analyseVisible,
             analyseChartData,
             analyseLoading,
-        } = this.state;
+            compareData,
+        } = this.state
         const rowSelection = {
             selectedRowKeys,
             onChange: this.onSelectChange,
-        };
-        const hasSelected = this.getHasSelected();
+        }
+        const hasSelected = this.getHasSelected()
         return (
             <div>
                 <div style={{ marginBottom: 16 }}>
-                    <AntTooltip placement="top" title="对比分析要求相同帧率，且同类型记录只有一条">
+                    <AntTooltip placement="top" title="对比分析要求所有记录的重回比率相同，且同类型记录只有一条">
                         <Button
                             type="primary"
                             onClick={this.analyse}
@@ -270,13 +277,14 @@ export default class Memory extends PureComponent {
                 <Modal
                     title={title}
                     visible={visible}
-                    width={632}
+                    width={732}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
+                    wrapClassName="vertical-center-modal"
                     footer={<Button key="back" size="large" onClick={this.handleCancel}>关闭</Button>}
                 >
                     <LineChart
-                        width={600} height={300} data={chartData}
+                        width={700} height={300} data={chartData}
                         margin={{top: 20, right: 50, left: 20, bottom: 5}}
                     >
                         <XAxis dataKey="time" name="时间" />
@@ -290,13 +298,14 @@ export default class Memory extends PureComponent {
                 <Modal
                     title="内存对比分析"
                     visible={analyseVisible}
-                    width={632}
+                    width={732}
                     onOk={this.handleAnalyseOk}
                     onCancel={this.handleAnalyseCancel}
+                    wrapClassName="vertical-center-modal"
                     footer={<Button key="back" size="large" onClick={this.handleAnalyseCancel}>关闭</Button>}
                 >
                     <LineChart
-                        width={600} height={300} data={analyseChartData}
+                        width={700} height={300} data={analyseChartData}
                         margin={{top: 20, right: 50, left: 20, bottom: 5}}
                     >
                         <XAxis dataKey="time" type="number" unit="ms" name="时间" />
@@ -310,6 +319,17 @@ export default class Memory extends PureComponent {
                             )
                         }
                     </LineChart>
+                    <BarChart
+                        width={700} height={300} data={compareData}
+                        margin={{top: 5, right: 30, left: 20, bottom: 5}}
+                    >
+                        <XAxis dataKey="name" name="类型" />
+                        <YAxis name="内存" unit="MB" />
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <Tooltip/>
+                        <Legend />
+                        <Bar dataKey="memory" fill="#00a2ae" />
+                    </BarChart>
                 </Modal>
             </div>
         );

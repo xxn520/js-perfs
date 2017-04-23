@@ -82,7 +82,7 @@ export default class App extends PureComponent {
                         </Menu>
                     </Sider>
                     <Layout style={{ padding: '24px' }}>
-                        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+                        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280, maxHeight: window.innerHeight - 108 }}>
                             {this.props.children}
                         </Content>
                     </Layout>
