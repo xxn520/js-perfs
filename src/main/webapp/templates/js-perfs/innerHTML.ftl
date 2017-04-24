@@ -19,6 +19,6 @@
         window.pageName = '${pageName}'
     </script>
     <script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="${contextPath}/build/jsPerfsInnerHTML.js"></script>
+    <script src="${contextPath}/static/dist/jsPerfsInnerHTML.js"></script>
 </body>
 </html>

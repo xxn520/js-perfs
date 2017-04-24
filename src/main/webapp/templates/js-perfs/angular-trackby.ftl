@@ -48,6 +48,6 @@
     </script>
     <script src="//cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
     <script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="${contextPath}/build/jsPerfsAngular.js"></script>
+    <script src="${contextPath}/static/dist/jsPerfsAngular.js"></script>
 </body>
 </html>

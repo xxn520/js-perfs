@@ -13,7 +13,7 @@ const {
     WEB_ROOT,
     DEST_DIR,
 } = config
-const publicPath = '/build/'
+const publicPath = '/static/dist/'
 const WEBPACK_DEV_FILES = [
     `webpack-dev-server/client?http://localhost:${WEBPACK_SERVER_PORT}/`,
     'webpack/hot/only-dev-server'

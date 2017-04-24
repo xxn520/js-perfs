@@ -15,6 +15,6 @@
     <div id="app"></div>
     <script src="//cdn.bootcss.com/react/15.5.4/react.min.js"></script>
     <script src="//cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
-    <script src="${contextPath}/build/index.js"></script>
+    <script src="${contextPath}/static/dist/index.js"></script>
 </body>
 </html>

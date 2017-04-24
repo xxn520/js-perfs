@@ -4,7 +4,16 @@
 const webpack = require('webpack')
 const path = require('path')
 const WebpackChunkHash = require('webpack-chunk-hash')
-const WEB_ROOT = path.resolve(__dirname, '../../')
+const autoprefixer = require('autoprefixer')
+const values = require('postcss-modules-values')
+const config = require('./consts')
+
+const {
+    WEBPACK_SERVER_PORT,
+    JAVA_SERVER_PORT,
+    WEB_ROOT,
+    DEST_DIR,
+} = config
 
 module.exports = {
     context: WEB_ROOT,
@@ -14,13 +23,14 @@ module.exports = {
         'react-dom': 'ReactDOM',
     },
     entry: {
-        'jsPerfsAngular': './src/js-perfs/angular.js',
-        'jsPerfsVue': './src/js-perfs/vue.js',
-        'jsPerfsReact': './src/js-perfs/react.js',
-        'jsPerfsInnerHTML': './src/js-perfs/innerHTML.js',
+        'jsPerfsAngular': './src/angular.js',
+        'jsPerfsVue': './src/vue.js',
+        'jsPerfsReact': './src/react.js',
+        'jsPerfsInnerHTML': './src/innerHTML.js',
+        'index': './src/index.js',
     },
     output: {
-        path: path.resolve(__dirname, '../../dist'),
+        path: DEST_DIR,
         filename: '[name].js',
     },
     module: {
@@ -28,6 +38,15 @@ module.exports = {
             exclude: [/node_modules/],
             test: /\.js$/,
             use: 'babel-loader'
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader']
+        }, {
+            test: /\.(gif|jpg|jpeg|png|woff|woff2|eot|ttf|svg)(\?v=.+)?$/,
+            use: 'url-loader?limit=20480&name=[path][name].[ext]?[sha256:hash:base64:8]'
+        }, {
+            test: /\.(eot|woff|woff2|svg|ttf)([?]?.*)$/,
+            use: 'file-loader'
         }]
     },
     plugins: [

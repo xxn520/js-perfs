@@ -39,6 +39,6 @@
     </script>
     <script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="//cdn.bootcss.com/vue/1.0.28/vue.min.js"></script>
-    <script src="${contextPath}/build/jsPerfsVue.js"></script>
+    <script src="${contextPath}/static/dist/jsPerfsVue.js"></script>
 </body>
 </html>

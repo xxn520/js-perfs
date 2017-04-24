@@ -21,6 +21,6 @@
     <script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="//cdn.bootcss.com/react/15.5.4/react.min.js"></script>
     <script src="//cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
-    <script src="${contextPath}/build/jsPerfsReact.js"></script>
+    <script src="${contextPath}/static/dist/jsPerfsReact.js"></script>
 </body>
 </html>
