@@ -18,7 +18,7 @@ public class PageParams extends PageRequest {
 	}
 
 	public PageParams(@QueryParam("page") int page, @QueryParam("page-size") @DefaultValue("10") int size) {
-		super(page, size);
+        super(page, size, Direction.DESC, "id");
 	}
 
 }

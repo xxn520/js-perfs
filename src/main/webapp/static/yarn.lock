@@ -4078,14 +4078,14 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-"react-addons-transition-group@^0.14.0 || ^15.0.0":
+"react-addons-transition-group@^0.14.0 || ^15.0.0", react-addons-transition-group@^15.0.0:
   version "15.5.2"
   resolved "http://registry.npm.taobao.org/react-addons-transition-group/download/react-addons-transition-group-15.5.2.tgz#da6989d9cffe27dffacaedc862000ffb09ae2206"
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-dom@^15.0.1:
+react-dom@^15.0.0:
   version "15.5.4"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:
@@ -4145,7 +4145,7 @@ react-smooth@0.1.20:
     raf "^3.2.0"
     react-addons-transition-group "^0.14.0 || ^15.0.0"
 
-react@^15.0.1:
+react@^15.0.0:
   version "15.5.4"
   resolved "http://registry.npm.taobao.org/react/download/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:
@@ -4723,6 +4723,10 @@ timers-browserify@^2.0.2:
   resolved "http://registry.npm.taobao.org/timers-browserify/download/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
   dependencies:
     setimmediate "^1.0.4"
+
+timing.js@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/timing.js/download/timing.js-1.2.0.tgz#670f83ea0ffdab97b43adf8a9bc1a1482939dd12"
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

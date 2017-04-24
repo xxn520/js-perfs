@@ -7,8 +7,12 @@
 
 .perfs-box .ant-row { margin-left: -8px; margin-right: -8px; }
 .perfs-box .ant-row > div { padding: 0 8px; }
+.perfs-box .ant-row .ant-col-6 { margin-bottom: 8px; }
 
-.custom-image { text-align: center; }
-.custom-image img { max-height: 200px; }
-.custom-card { padding: 10px 16px; }
-.custom-card p { color: #999; }
+.custom-image, .timing-image { text-align: center; }
+.custom-image img { max-height: 140px; }
+.timing-image img { max-height: 338px; }
+.custom-card, .timing-card { padding: 10px 16px; }
+.custom-card p, .timing-card p { color: #999; }
+.timing-card p { display: inline-block; }
+.timing-item { margin: 8px 0; }

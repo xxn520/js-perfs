@@ -8,14 +8,14 @@ import App from './components/App'
 import Index from './components/Index'
 import Monitor from './components/Monitor'
 import Memory from './components/Memory'
+import Timing from './components/Timing'
 
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Index} />
             <Route path="fpaint">
-                <Route path="monitor" component={Monitor} />
-                <Route path="memory" component={Memory} />
+                <Route path="timing" component={Timing} />
             </Route>
             <Route path="repaint">
                 <Route path="monitor" component={Monitor} />

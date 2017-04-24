@@ -10,10 +10,9 @@ export const KEY_ROUTE_MAP = {
     '5': '/js-perfs/react',
     '6': '/js-perfs/react-fiber',
     '7': '/',
-    '8': '/fpaint/monitor',
-    '9': '/fpaint/memory',
-    '10': '/repaint/monitor',
-    '11': '/repaint/memory',
+    '8': '/fpaint/timing',
+    '9': '/repaint/monitor',
+    '10': '/repaint/memory',
 }
 
 export const TYPES = [

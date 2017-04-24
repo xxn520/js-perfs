@@ -64,12 +64,11 @@ export default class App extends PureComponent {
                         >
                             <Item key="7">首页</Item>
                             <SubMenu key="fpaint" title={<span><Icon type="chrome" /><span>首屏渲染</span></span>}>
-                                <Item key="8">帧率</Item>
-                                <Item key="9">内存</Item>
+                                <Item key="8">时间</Item>
                             </SubMenu>
                             <SubMenu key="repaint" title={<span><Icon type="appstore" /><span>重新渲染</span></span>}>
-                                <Item key="10">帧率</Item>
-                                <Item key="11">内存</Item>
+                                <Item key="9">帧率</Item>
+                                <Item key="10">内存</Item>
                             </SubMenu>
                             <SubMenu
                                 key="test"

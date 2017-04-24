@@ -18,7 +18,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/innerHTML')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/html.svg" />
+                                <img alt="innerHTML" src="/static/assets/images/html.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>直接操作原生DOM</h3>
@@ -32,7 +32,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/angular')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/angular.svg" />
+                                <img alt="angular" src="/static/assets/images/angular.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>Angular1 为代表</h3>
@@ -46,7 +46,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/angular-trackby')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/angular.svg" />
+                                <img alt="angular" src="/static/assets/images/angular.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>Angular1 为代表</h3>
@@ -60,7 +60,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/vue1')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/vue.svg" />
+                                <img alt="vue1" src="/static/assets/images/vue.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>Vue1 为代表</h3>
@@ -74,7 +74,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/vue2')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/vue.svg" />
+                                <img alt="vue2" src="/static/assets/images/vue.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>Vue2 为代表</h3>
@@ -88,7 +88,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/react')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/react.svg" />
+                                <img alt="react" src="/static/assets/images/react.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>React 为代表</h3>
@@ -102,7 +102,7 @@ export default class Index extends PureComponent {
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/react-fiber')}>更多</a>}
                         >
                             <div className="custom-image">
-                                <img alt="example" src="/static/assets/images/react.svg" />
+                                <img alt="react-fiber" src="/static/assets/images/react.svg" />
                             </div>
                             <div className="custom-card">
                                 <h3>React Next</h3>

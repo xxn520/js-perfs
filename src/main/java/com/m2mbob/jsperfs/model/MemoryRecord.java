@@ -11,22 +11,17 @@ import java.util.Date;
 @Cacheable
 public class MemoryRecord extends BaseModel{
 
-    @FormParam("mutations")
     @Column(scale = 2)
     private Double mutations;
 
-    @FormParam("type")
     private String type;
 
-    @FormParam("json")
     @Lob
     private String json;
 
-    @FormParam("start_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date start_time;
 
-    @FormParam("stop_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date stop_time;
 

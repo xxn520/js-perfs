@@ -1,6 +1,7 @@
 /**
  * Created by m2mbob on 2017/4/19.
  */
+import 'timing.js'
 import './ENV'
 import MemoryStats from './MemoryStats'
 import Monitor from './Monitor'
@@ -173,6 +174,41 @@ title.classList.add('title')
 header.appendChild(title)
 
 document.body.insertBefore(header, document.body.firstChild)
+
+// 页面载入时把首屏加载相关数据提交
+setTimeout(() => {
+    const timings = timing.getTimes({simple: true})
+    const keys = Object.keys(timings)
+    keys.forEach((key) => {
+        const newKey = key.replace(/([A-Z])/g, '_$1').toLowerCase()
+        timings[newKey] = timings[key]
+        delete timings[key]
+    })
+    fetch('/api/timing.json', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ...timings,
+            type: window.pageName,
+        })
+    }).then(() => {
+        swal({
+            title: "Success!",
+            text: "post first paint data success",
+            type: "success",
+            confirmButtonText: "confirm"
+        })
+    }).catch(() => {
+        swal({
+            title: "Error!",
+            text: "post first paint data error",
+            type: "error",
+            confirmButtonText: "confirm"
+        })
+    })
+}, 100)
 
 export default {
     memoryStats,

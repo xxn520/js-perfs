@@ -1,7 +1,6 @@
 package com.m2mbob.jsperfs.model;
 
 import javax.persistence.*;
-import javax.ws.rs.FormParam;
 import java.util.Date;
 
 /**
@@ -11,22 +10,17 @@ import java.util.Date;
 @Cacheable
 public class MonitorRecord extends BaseModel {
 
-    @FormParam("mutations")
     @Column(scale = 2)
     private Double mutations;
 
-    @FormParam("type")
     private String type;
 
-    @FormParam("json")
     @Lob
     private String json;
 
-    @FormParam("start_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date start_time;
 
-    @FormParam("stop_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date stop_time;
 
