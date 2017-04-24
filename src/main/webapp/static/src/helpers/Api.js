@@ -9,4 +9,5 @@ export default {
     memory: 'memory.json',
     deleteMonitor: (id) => `monitor/${id}.json`,
     deleteMemory: (id) => `memory/${id}.json`,
+    timing: 'timing.json',
 }
