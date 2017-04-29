@@ -1,7 +1,7 @@
 server.port: 8080
 spring:
   profiles:
-    active: dev
+    active: prod
   jersey:
     init:
       jersey.config.server.mvc.templateBasePath.freemarker: /templates/
@@ -54,9 +54,9 @@ spring:
     init:
       jersey.config.server.mvc.caching.freemarker: false
   datasource:
-    url: jdbc:mysql://localhost/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
     username: root
-    password:
+    password: 123456
   jpa:
     generate-ddl: true
     show-sql: true
@@ -74,5 +74,18 @@ spring:
     database: HSQL
     generate-ddl: true
     show-sql: true
+    properties:
+      hibernate.search.default.directory_provider: ram
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://10.34.18.73:3333/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  jpa:
+    generate-ddl: true
     properties:
       hibernate.search.default.directory_provider: ram
