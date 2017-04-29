@@ -1,6 +1,6 @@
 ## Js-perfs
 
-a system that record and analyse memory and rate of frameworks of js
+A system that record and analyse memory and rate of js frameworks.
 
 ### run system
 
