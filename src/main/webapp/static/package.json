@@ -1,7 +1,7 @@
 {
     "name": "blog",
     "version": "0.0.1",
-    "description": "react blog material-ui",
+    "description": "js-perfs react ant-design webpack2",
     "main": "index.js",
     "author": "m2mbob",
     "license": "MIT",
