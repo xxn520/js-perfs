@@ -1,4 +1,4 @@
-<#assign contextPath="http://localhost:8080" />
+<#include "../consts.ftl">
 <!doctype html>
 <html lang="zh-CN">
 <head>

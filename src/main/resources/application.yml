@@ -1,7 +1,7 @@
-server.port: 8080
+server.port: 8081
 spring:
   profiles:
-    active: prod
+    active: dev
   jersey:
     init:
       jersey.config.server.mvc.templateBasePath.freemarker: /templates/
@@ -56,7 +56,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: 123456
+    password:
   jpa:
     generate-ddl: true
     show-sql: true
@@ -82,7 +82,7 @@ spring:
 spring:
   profiles: prod
   datasource:
-    url: jdbc:mysql://10.34.18.73:3333/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://172.104.83.94:3333/jsperfs?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
   jpa:

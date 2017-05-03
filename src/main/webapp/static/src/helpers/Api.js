@@ -1,7 +1,13 @@
 /**
  * Created by m2mbob on 2017/4/22.
  */
-export const baseUrl = "http://localhost:8080";
+let url
+if (process.env.NODE_ENV === 'develop') {
+    url = "http://localhost:8080"
+} else {
+    url = "http://172.104.83.94:8080"
+}
+export const baseUrl = url
 export const apiHost = `${baseUrl}/api/`;
 
 export default {
