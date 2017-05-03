@@ -23,6 +23,7 @@ const APP_ENTRY = {
     'jsPerfsVue': ['./src/vue.js'],
     'jsPerfsReact': ['./src/react.js'],
     'jsPerfsInnerHTML': ['./src/innerHTML.js'],
+    'jsPerfsBackbone': ['./src/backbone.js'],
     'index': ['./src/index.js'],
 };
 

@@ -3,20 +3,22 @@
  */
 export const KEY_ROUTE_MAP = {
     '0': '/js-perfs/innerHTML',
-    '1': '/js-perfs/angular',
-    '2': '/js-perfs/angular-trackby',
-    '3': '/js-perfs/vue1',
-    '4': '/js-perfs/vue2',
-    '5': '/js-perfs/react',
-    '6': '/js-perfs/react-fiber',
-    '7': '/',
-    '8': '/fpaint/timing',
-    '9': '/repaint/monitor',
-    '10': '/repaint/memory',
+    '1': '/js-perfs/backbone',
+    '2': '/js-perfs/angular',
+    '3': '/js-perfs/angular-trackby',
+    '4': '/js-perfs/vue1',
+    '5': '/js-perfs/vue2',
+    '6': '/js-perfs/react',
+    '7': '/js-perfs/react-fiber',
+    '8': '/',
+    '9': '/fpaint/timing',
+    '10': '/repaint/monitor',
+    '11': '/repaint/memory',
 }
 
 export const TYPES = [
     'innerHTML',
+    'backbone',
     'angular',
     'angular-trackby',
     'vue1',
@@ -27,12 +29,13 @@ export const TYPES = [
 
 export const TYPES_COLORS = {
     'innerHTML': '#f04134',
-    'angular': '#00a854',
-    'angular-trackby': '#108ee9',
-    'vue1': '#f5317f',
-    'vue2': '#f56a00',
-    'react': '#7265e6',
-    'react-fiber': '#ffbf00',
+    'backbone': '#00a854',
+    'angular': '#108ee9',
+    'angular-trackby': '#f5317f',
+    'vue1': '#f56a00',
+    'vue2': '#7265e6',
+    'react': '#ffbf00',
+    'react-fiber': '#00a2ae',
 }
 
 export const TYPES_FILTER = TYPES.map((type) => {

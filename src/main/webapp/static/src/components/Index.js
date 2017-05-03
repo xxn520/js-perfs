@@ -28,6 +28,20 @@ export default class Index extends PureComponent {
                     </Col>
                     <Col span="6">
                         <Card
+                            title="手动更新UI模式"
+                            extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/backbone')}>更多</a>}
+                        >
+                            <div className="custom-image">
+                                <img alt="backbone" src="/static/assets/images/backbone.svg" />
+                            </div>
+                            <div className="custom-card">
+                                <h3>Backbone 为例</h3>
+                                <p>http://backbonejs.org//</p>
+                            </div>
+                        </Card>
+                    </Col>
+                    <Col span="6">
+                        <Card
                             title="脏检查"
                             extra={<a href="javascript:void(0)" onClick={() => this.go('/js-perfs/angular')}>更多</a>}
                         >

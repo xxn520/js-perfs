@@ -83,4 +83,13 @@ public class JsPerfsController {
         return new Viewable("/js-perfs/innerHTML.ftl", model);
     }
 
+    @GET
+    @Path("/backbone")
+    public Viewable backbone() {
+        Map<String, String> model = new HashMap<>();
+        model.put("pageName", "backbone");
+        model.put("env", profile);
+        return new Viewable("/js-perfs/backbone.ftl", model);
+    }
+
 }
