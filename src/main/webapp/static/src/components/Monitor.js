@@ -167,7 +167,7 @@ export default class Monitor extends PureComponent {
                     sum += rate
                     analyseChartData.push({time, [type]: rate})
                 })
-                compareData.push({name: type, rate: sum / data.length})
+                compareData.push({name: type, rate: sum / data.length, mutations: r.mutations})
             })
             this.setState({
                 compareData,
@@ -195,8 +195,10 @@ export default class Monitor extends PureComponent {
         })
     }
     getHasSelected() {
-        let result = true
+        let sameMutations = true
+        let sameTypes = true
         let mutation
+        let type
         const { data, selectedRowKeys } = this.state
         const convertKeys = selectedRowKeys.map((v) => {
             return +v.split('-')[1]
@@ -209,23 +211,27 @@ export default class Monitor extends PureComponent {
             })
             if (index !== -1) {
                 if (mutation && mutation !== data[index].mutations) {
-                    result = false
-                    return false
+                    sameMutations = false
                 }
-                if (!types[data[index].type]) {
-                    types[data[index].type] = true
-                } else {
-                    result = false
-                    return false
+                if (type && type !== data[index].type) {
+                    sameTypes = false
                 }
                 mutation = data[index].mutations
+                type = data[index].type
                 mutations.push(mutation)
+                types[data[index].type] = true
             }
         })
         if (mutations.length < 2) {
-            return false
+            return {
+                sameMutations: false,
+                sameTypes: false,
+            }
         } else {
-            return result
+            return {
+                sameMutations,
+                sameTypes,
+            }
         }
     }
     componentDidMount() {
@@ -249,7 +255,11 @@ export default class Monitor extends PureComponent {
             selectedRowKeys,
             onChange: this.onSelectChange,
         }
-        const hasSelected = this.getHasSelected()
+        const {
+            sameMutations,
+            sameTypes,
+        } = this.getHasSelected()
+        const hasSelected = sameMutations || sameTypes
         return (
             <div>
                 <div style={{ marginBottom: 16 }}>
@@ -321,7 +331,7 @@ export default class Monitor extends PureComponent {
                         width={700} height={300} data={compareData}
                         margin={{top: 5, right: 30, left: 20, bottom: 5}}
                     >
-                        <XAxis dataKey="name" name="类型" />
+                        <XAxis dataKey={sameMutations ? 'name': 'mutations'} name={sameMutations ? '类型': '更新率'} />
                         <YAxis name="帧率" unit="/sec" />
                         <CartesianGrid strokeDasharray="3 3"/>
                         <Tooltip/>

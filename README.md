@@ -2,6 +2,11 @@
 
 A system that record and analyse memory and rate of js frameworks.
 
+### Enable Memory API 
+
+#### MacOS
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-precise-memory-info --enable-memory-info
+
 ### run system
 
 1. go to `src/main/webapp/static`

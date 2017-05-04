@@ -208,7 +208,7 @@ setTimeout(() => {
             confirmButtonText: "confirm"
         })
     })
-}, 100)
+}, 500)
 
 export default {
     memoryStats,
