@@ -9,6 +9,7 @@ import Index from './components/Index'
 import Monitor from './components/Monitor'
 import Memory from './components/Memory'
 import Timing from './components/Timing'
+import CrossPlatform from './components/CrossPlatform'
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -21,6 +22,7 @@ ReactDOM.render((
                 <Route path="monitor" component={Monitor} />
                 <Route path="memory" component={Memory} />
             </Route>
+            <Route path="crossplatform" component={CrossPlatform}/>
         </Route>
     </Router>
 ), document.getElementById('app'))

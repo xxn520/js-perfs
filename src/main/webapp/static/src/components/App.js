@@ -70,6 +70,9 @@ export default class App extends PureComponent {
                                 <Item key="10">帧率</Item>
                                 <Item key="11">内存</Item>
                             </SubMenu>
+                            <Item key="12">
+                                <span><Icon type="android" /><Icon type="apple" /><span>跨平台</span></span>
+                            </Item>
                             <SubMenu
                                 key="test"
                                 title={<span><Icon type="api" /><span>测试场</span></span>}

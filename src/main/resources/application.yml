@@ -1,7 +1,7 @@
-server.port: 8080
+server.port: 8081
 spring:
   profiles:
-    active: prod
+    active: dev
   jersey:
     init:
       jersey.config.server.mvc.templateBasePath.freemarker: /templates/

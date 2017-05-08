@@ -14,6 +14,7 @@ export const KEY_ROUTE_MAP = {
     '9': '/fpaint/timing',
     '10': '/repaint/monitor',
     '11': '/repaint/memory',
+    '12': '/crossplatform',
 }
 
 export const TYPES = [
